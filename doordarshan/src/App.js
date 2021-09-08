@@ -13,12 +13,13 @@ function App() {
   useEffect(() =>{async function fetchData() {
     const movieResp = await fetch(FEATURED_API);
     const movieData = await movieResp.json();
+    console.log(movieData.results);
     setMovies(movieData.results);}
     fetchData();
   },[]);
   return (
     <div className="App">
-      {movies.length > 0 && movies.map((movie) => <Movie />)}
+      {movies.map((movie) => <Movie movie/>)}
     </div>
   );
 }
